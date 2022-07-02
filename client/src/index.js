@@ -14,3 +14,5 @@ root.render(
     </ChakraProvider>
   </React.StrictMode>
 );
+
+//HTML'de root olarak tanımladığımız divin içine React uygulamamızı işler.

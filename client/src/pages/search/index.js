@@ -8,21 +8,20 @@ function Search() {
   const [results, setResults] = React.useState([]);
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    api.get("/search/" + search).then((res) => setResults(res.data.data));
+    e.preventDefault();                                                     //sayfanın yenilenmesini engelleme
+    api.get("/search/" + search).then((res) => setResults(res.data.data));  // apiden gelen arama sonucunu stateye kaydediyor. resulta kaydediyor
   };
-  console.log(results);
   return (
     <VStack pt="10">
       <form onSubmit={handleSearch}>
         <Flex>
-          <Input placeholder="Arama yap" value={search} onChange={(e) => setSearch(e.target.value)} />
+          <Input placeholder="Arama yap" value={search} onChange={(e) => setSearch(e.target.value)} /> 
           <Button type="submit">Ara</Button>
         </Flex>
       </form>
 
       <VStack spacing={6} pt="10">
-        {results.map((result) => (
+        {results.map((result) => (                                           //apiye gelen arama sonucunu cardlar ile döndürüyor
           <Card submission={result} showMenu={false} />
         ))}
         {results.length === 0 && (

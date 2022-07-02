@@ -35,7 +35,7 @@ function Card({ submission, fetchSubmissions, showMenu = true }) {
       })
       .then(() => {
         toast({
-          title: "Form onaylandi.",
+          title: "Form onaylandı.",
         });
         fetchSubmissions();
       });
@@ -59,6 +59,8 @@ function Card({ submission, fetchSubmissions, showMenu = true }) {
       <Box
         cursor={"pointer"}
         display="flex"
+        minWidth={"576px"}
+        minHeight={"181px"}
         boxShadow={"md"}
         gap={20}
         p={5}
@@ -72,24 +74,24 @@ function Card({ submission, fetchSubmissions, showMenu = true }) {
         position="relative"
       >
         <div className={"dark"}>
-          <Text>Ogrenci</Text>
+          <Text>Öğrenci</Text>
           <Divider my="2" />
           <Text>
-            Adi soyadi: <span style={{ fontWeight: "bold" }}>{form.student_name}</span>
+            Adı soyadı: <span style={{ fontWeight: "bold" }}>{form.student_name}</span>
           </Text>
           <Text>
-            Ogrenci no: <span style={{ fontWeight: "bold" }}>{form.student_number}</span>
+            Öğrenci no: <span style={{ fontWeight: "bold" }}>{form.student_number}</span>
           </Text>
           <Text>
-            Sinifi: <span style={{ fontWeight: "bold" }}>{form.student_class}</span>
+            Sınıfı: <span style={{ fontWeight: "bold" }}>{form.student_class}</span>
           </Text>
         </div>
 
-        <div>
+        <div style={{minWidth:"155.55px"}}>
           <Text>Firma</Text>
           <Divider my="2" />
-          <Text>Firma adi: {form.company_name}</Text>
-          <Text>Yetkili kisi: {form.employer_name}</Text>
+          <Text>Firma adı: {form.company_name}</Text>
+          <Text>Yetkili kişi: {form.employer_name}</Text>
           <Text>Firma Adresi: {form.company_address}</Text>
         </div>
 
@@ -106,23 +108,23 @@ function Card({ submission, fetchSubmissions, showMenu = true }) {
           </Menu>
         )}
       </Box>
-
-      <Modal blockScrollOnMount={false} isCentered isOpen={openModal} onClose={() => setOpenModal(false)}>
+      {/* kartın üzerine tıklandığında modal açılır */}
+      <Modal blockScrollOnMount={false} isCentered isOpen={openModal} onClose={() => setOpenModal(false)}> 
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Detay</ModalHeader>
           <ModalCloseButton />
 
           <ModalBody>
-            <Box fontWeight={"bold"}>Ogrenci:</Box>
+            <Box fontWeight={"bold"}>Öğrenci:</Box>
             <Text>
-              Adi soyadi: <span style={{ fontWeight: "bold" }}>{form.student_name}</span>
+              Adi soyadı: <span style={{ fontWeight: "bold" }}>{form.student_name}</span>
             </Text>
             <Text>
-              Ogrenci no: <span style={{ fontWeight: "bold" }}>{form.student_number}</span>
+              Öğrenci no: <span style={{ fontWeight: "bold" }}>{form.student_number}</span>
             </Text>
             <Text>
-              Sinifi: <span style={{ fontWeight: "bold" }}>{form.student_class}</span>
+              Sınıfı: <span style={{ fontWeight: "bold" }}>{form.student_class}</span>
             </Text>
             <Text>
               Eposta: <span style={{ fontWeight: "bold" }}>{form.student_email}</span>
@@ -131,19 +133,19 @@ function Card({ submission, fetchSubmissions, showMenu = true }) {
               Tel no: <span style={{ fontWeight: "bold" }}>{form.student_phone}</span>
             </Text>
             <Text>
-              Staj yapilacak alan: <span style={{ fontWeight: "bold" }}>{form.student_class}</span>
+              Staj yapılacak alan: <span style={{ fontWeight: "bold" }}>{form.student_class}</span>
             </Text>
 
             <Divider my="2" />
             <Box fontWeight={"bold"}>Firma:</Box>
             <Text>
-              Firma adi: <span style={{ fontWeight: "bold" }}>{form.company_name}</span>
+              Firma adı: <span style={{ fontWeight: "bold" }}>{form.company_name}</span>
             </Text>
             <Text>
               Firma adresi: <span style={{ fontWeight: "bold" }}>{form.company_address}</span>
             </Text>
             <Text>
-              Hizmet alani: <span style={{ fontWeight: "bold" }}>{form.company_area}</span>
+              Hizmet alanı: <span style={{ fontWeight: "bold" }}>{form.company_area}</span>
             </Text>
             <Text>
               Telefon: <span style={{ fontWeight: "bold" }}>{form.company_phone}</span>
@@ -158,23 +160,23 @@ function Card({ submission, fetchSubmissions, showMenu = true }) {
               Faks: <span style={{ fontWeight: "bold" }}>{form.company_faks}</span>
             </Text>
             <Text>
-              Staja baslangic: <span style={{ fontWeight: "bold" }}>{form.company_start_date}</span>
+              Staja başlangıç: <span style={{ fontWeight: "bold" }}>{form.company_start_date}</span>
             </Text>
             <Text>
-              Staj bitis: <span style={{ fontWeight: "bold" }}>{form.company_finish_date}</span>
+              Staj bitiş: <span style={{ fontWeight: "bold" }}>{form.company_finish_date}</span>
             </Text>
             <Text>
-              Suresi: <span style={{ fontWeight: "bold" }}>{form.company_total_week}</span>
+              Süresi: <span style={{ fontWeight: "bold" }}>{form.company_total_week}</span>
             </Text>
 
             <Divider my="2" />
 
-            <Box fontWeight={"bold"}>Is veren veya Yetkilinin bilgileri:</Box>
+            <Box fontWeight={"bold"}>İş veren veya Yetkilinin bilgileri:</Box>
             <Text>
-              Adi soyadi: <span style={{ fontWeight: "bold" }}>{form.employer_name}</span>
+              Adi soyadı: <span style={{ fontWeight: "bold" }}>{form.employer_name}</span>
             </Text>
             <Text>
-              Gorev: <span style={{ fontWeight: "bold" }}>{form.employer_position}</span>
+              Görev: <span style={{ fontWeight: "bold" }}>{form.employer_position}</span>
             </Text>
             <Text>
               SGK no: <span style={{ fontWeight: "bold" }}>{form.employer_sgk_no}</span>

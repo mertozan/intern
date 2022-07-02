@@ -11,7 +11,7 @@ function Login() {
   const toast = useToast();
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();  //sayfanın yenilenmesini engelleme
     api
       .post("/login", {
         email: email,
@@ -19,8 +19,8 @@ function Login() {
       })
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem("user", JSON.stringify(res.data));
-          toast({
+          localStorage.setItem("user", JSON.stringify(res.data));   //localstorageye user bilgisini kaydet, başka şekilde yapamayız, localestorage string olarak kaydediyor
+          toast({                                                   //yukarıdaki giriş başarılı butonu chakranın
             title: "Giriş başarılı",
             status: "success",
             duration: 3000,
@@ -41,12 +41,12 @@ function Login() {
 
   return (
     <div>
-      <Text>Giris yap</Text>
+      <Text>Giriş yap</Text>
       <form onSubmit={onSubmit}>
         <VStack spacing={5} mt="10">
           <Input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={email}                                 //inputun değerini tutuyor 
+            onChange={(e) => setEmail(e.target.value)}    //inputun değerini kaydediyor
             type="email"
             placeholder="Eposta"
           />
@@ -57,7 +57,7 @@ function Login() {
             placeholder="Şifre"
           />
           <Flex w="full" justifyContent={"flex-end"}>
-            <Button type="submit">Gönder</Button>
+            <Button type="submit">Giriş</Button>
           </Flex>
         </VStack>
       </form>

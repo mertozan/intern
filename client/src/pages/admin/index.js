@@ -7,7 +7,7 @@ import { socket } from "../../socket";
 import { useNavigate } from "react-router-dom";
 
 function Admin() {
-  const [submissions, setSubmissions] = React.useState([]);
+  const [submissions, setSubmissions] = React.useState([]);  //submissionları kaydedip cardları basıyor
   const [loading, setLoading] = React.useState(false);
   const [tabIndex, setTabIndex] = React.useState(0);
   const navigate = useNavigate();
@@ -24,12 +24,12 @@ function Admin() {
     });
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {  //sayfa ilk yüklendiğinde submissionları çeker
     fetchSubmissions();
-    socket.on("connect", () => {
+    socket.on("connect", () => {  
       console.log("connected id:", socket.id);
     });
-    socket.on("submitted", (data) => {
+    socket.on("submitted", (data) => {  //eğer submitted diye bir event geldi ise submissionları yenile
       fetchSubmissions();
     });
     // return () => socket.disconnect();
@@ -39,7 +39,7 @@ function Admin() {
     navigate("/login");
   }
 
-  const logout = () => {
+  const logout = () => {  
     localStorage.removeItem("user");
     navigate("/login");
   };
@@ -50,7 +50,7 @@ function Admin() {
         <TabList>
           <Tab>Hepsi</Tab>
           <Tab>Onaylananlar</Tab>
-          <Tab>Reddelenler</Tab>
+          <Tab>Reddedilenler</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
@@ -85,7 +85,7 @@ function Admin() {
       </Tabs>
 
       <Button onClick={logout} position={"fixed"} bottom="50px" right="50px">
-        Cikis yap
+        Çıkış yap
       </Button>
     </div>
   );

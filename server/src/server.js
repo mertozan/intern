@@ -1,4 +1,4 @@
-// Create express app
+// Create express app   
 const express = require("express");
 const app = express();
 var cors = require("cors");
@@ -18,12 +18,8 @@ var HTTP_PORT = 8000;
 server.listen(HTTP_PORT, () => {
   console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT));
 });
-// Root endpoint
-app.get("/", (req, res, next) => {
-  res.json({ message: "Ok" });
-});
 
-app.get("/api/submissions", (req, res, next) => {
+app.get("/api/submissions", (req, res, next) => {   //submissions tablosundaki tüm verileri getiriyor
   db.all("SELECT * FROM submissions", (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -40,10 +36,10 @@ app.get("/api/submissions", (req, res, next) => {
   });
 });
 
-// Create a new submission
+// Create a new submission     
 app.post("/api/submissions", (req, res, next) => {
   const form = req.body.data;
-  db.run(`INSERT INTO submissions (form, status) VALUES (?, ?)`, [JSON.stringify(form), 1], function (err) {
+  db.run(`INSERT INTO submissions (form, status) VALUES (?, ?)`, [JSON.stringify(form), 0], function (err) {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
@@ -133,7 +129,7 @@ app.post("/api/login", (req, res, next) => {
 });
 
 // Default response for any other request
-app.use(function (req, res) {
+app.use(function (req, res) {  //herhangi bir başka istek gelirse 404 yanıtı gönderiyor
   res.status(404);
 });
 
